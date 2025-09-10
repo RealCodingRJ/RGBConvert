@@ -3,7 +3,7 @@ const url = "mongodb://localhost:27017/";
 
 const client = new MongoClient(url);
 
-export async function mainFunc(doc) {
+export async function mainFunc(r, g, b, hexR, hexG, hexB) {
 
     await client.connect();
 
@@ -12,7 +12,5 @@ export async function mainFunc(doc) {
     const db = client.db("Colors");
 
     const coll = db.collection("colors")
-    await coll.insertOne({doc});
+    await coll.insertOne({r, g, b, hexR});
 }
-
-await mainFunc();
